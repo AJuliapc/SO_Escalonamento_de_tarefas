@@ -10,6 +10,9 @@ IMPORTANTE:
 * Prioridade 0 (zero) significa sem prioridade
 * Quanto maior o valor, maior a prioridade
 * Tipo de processo: CPU bound = 1; I/O bound = 2; ambos = 3; 
+* CPU Bound (1) = FCFS e SJF
+* I/O Bound (2) = SRTF e Prioc
+* Ambos (3) = PrioP e RR
 * Comentar o código fonte;
 _____
 
@@ -20,9 +23,13 @@ _____
 
 # Compilação e saídas
 
+Para compilar, basta entrar com o seguinte caminho no terminal:
+
 ```python 
 python escalanador.py
 ```
+
+Que então irá pedir para digitar o caminho `.txt` do arquivo que você quer verificar o escalonamento:
 
 ```python
 === SISTEMA DE ESCALONAMENTO ELF ===
