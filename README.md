@@ -72,3 +72,109 @@ Tempo médio de turnaround: 9.00
 Escalonamento finalizado!
 ```
 
+```python 
+python escalanador.py
+```
+
+```python
+=== SISTEMA DE ESCALONAMENTO ELF ===
+Informe o nome do arquivo com os processos: Prio-6.txt
+
+Executando escalonamento para cada tipo de processo encontrado:
+
+=== Processos mistos (Tipo 3) ===
+Quantidade de processos: 6
+Informe o quantum para os algoritmos que necessitam: 2
+
+Resultados Round Robin (RR):
+
+Ordem de Execução (PID):
+P1 P2 P3 P4 P5 P6 P3 P4 P5 P6 P5 P6 P6
+
+Métricas:
+Tempo médio de espera: 7.83
+Tempo médio de turnaround: 11.33
+
+Resultados Prioridade Preemptivo (PrioP):
+
+Ordem de Execução (PID):
+P1 P2 P2 P3 P3 P3 P5 P5 P5 P5 P5 P4 P4 P4 P6 P6 P6 P6 P6 P6 P6
+
+Métricas:
+Tempo médio de espera: 5.83
+Tempo médio de turnaround: 9.33
+
+Escalonamento finalizado!
+```
+
+```python 
+python escalanador.py
+```
+
+```python
+=== SISTEMA DE ESCALONAMENTO ELF ===
+Informe o nome do arquivo com os processos: RR-6.txt
+
+Executando escalonamento para cada tipo de processo encontrado:
+
+=== Processos mistos (Tipo 3) ===
+Quantidade de processos: 6
+Informe o quantum para os algoritmos que necessitam: 2
+
+Resultados Round Robin (RR):
+
+Ordem de Execução (PID):
+P1 P2 P3 P4 P4 P5 P5 P5 P5 P6 P6 P6 
+
+Métricas:
+Tempo médio de espera: 0.00
+Tempo médio de turnaround: 3.67
+
+Resultados Prioridade Preemptivo (PrioP):
+
+Ordem de Execução (PID):
+P1 P2 P2 P3 P3 P4 P4 P4 P4 P5 P5 P5 P5 P5 P5 P5 P5 P6 P6 P6 P6 P6 
+
+Métricas:
+Tempo médio de espera: 0.00
+Tempo médio de turnaround: 3.67
+
+Escalonamento finalizado!
+```
+
+```python 
+python escalanador.py
+```
+
+```python
+=== SISTEMA DE ESCALONAMENTO ELF ===
+Informe o nome do arquivo com os processos: SRTF.txt
+
+Executando escalonamento para cada tipo de processo encontrado:
+
+=== Processos I/O-bound (Tipo 2) ===
+Quantidade de processos: 5
+Informe o quantum para os algoritmos que necessitam: 2
+
+Resultados Shortest Remaining Time First (SRTF):
+
+Ordem de Execução (PID):
+P2 P2 P3 P4 P3 P3 P3 P5 P5 P1 P1 P1 P1 P1 
+
+Métricas:
+Tempo médio de espera: 2.60
+Tempo médio de turnaround: 5.40
+
+Resultados Prioridade Cooperativo (PrioC):
+
+Ordem de Execução (PID):
+P2 P1 P5 P4 P3 
+
+Métricas:
+Tempo médio de espera: 3.80
+Tempo médio de turnaround: 6.60
+
+Escalonamento finalizado!
+```
+
+
