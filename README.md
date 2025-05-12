@@ -154,7 +154,7 @@ Executando escalonamento para cada tipo de processo encontrado:
 
 === Processos I/O-bound (Tipo 2) ===
 Quantidade de processos: 5
-Informe o quantum para os algoritmos que necessitam: 2
+Informe o quantum para os algoritmos que necessitam: 1
 
 Resultados Shortest Remaining Time First (SRTF):
 
