@@ -31,7 +31,6 @@ class Processo:
         self.duracao = int(duracao)
         self.prioridade = int(prioridade)
         self.tipo = int(tipo)
-        self.tempo_restante = int(duracao)
 
 def ler_processos(nome_arquivo):
 
@@ -160,18 +159,17 @@ def escalonamento_sjf(processos):
 
     return ordem_execucao, calcular_tempos(resultados)
 
-def escalonamento_srtf(processos):
+def escalonamento_srtf(processos, quantum):
 
     """
-    Implementa o algoritmo Shortest Remaining Time First (preemptivo).
-
+    Implementa o algoritmo Shortest Remaining Time First (preemptivo) com quantum.
     Args:
         processos: Lista de objetos Processo
-
+        quantum: Fatia de tempo para execução
     Returns:
         Tupla (ordem_execucao, tempos_medios)
     """
-
+    
     processos = copy.deepcopy(processos)
     tempo_atual = 0
     ordem_execucao = []
@@ -195,9 +193,14 @@ def escalonamento_srtf(processos):
         if processo_escolhido.pid not in resultados:
             resultados[processo_escolhido.pid] = [processo_escolhido.pid, processo_escolhido.chegada, None, processo_escolhido.duracao]
 
-        processo_escolhido.tempo_restante -= 1
-        tempo_atual += 1
-        ordem_execucao.append(processo_escolhido.pid)
+        execucao = min(processo_escolhido.tempo_restante, quantum)
+        processo_escolhido.tempo_restante -= execucao
+        tempo_atual += execucao
+        ordem_execucao.extend([processo_escolhido.pid] * execucao)
+
+        # Adiciona processos que chegaram durante a execução
+        while processos_restantes and processos_restantes[0].chegada <= tempo_atual:
+            fila.append(processos_restantes.pop(0))
 
         if processo_escolhido.tempo_restante == 0:
             fila.remove(processo_escolhido)
@@ -407,11 +410,11 @@ if __name__ == '__main__':
         print("\n=== Processos I/O-bound (Tipo 2) ===")
         print(f"Quantidade de processos: {len(processos_tipo2)}")
 
-        if quantum is None:  # Só pede o quantum uma vez
+        if quantum is None:
             quantum = int(input("Informe o quantum para os algoritmos que necessitam: "))
 
         print("\nResultados Shortest Remaining Time First (SRTF):")
-        exec_srtf, tempos_srtf = escalonamento_srtf(processos_tipo2)
+        exec_srtf, tempos_srtf = escalonamento_srtf(processos_tipo2, quantum)
         exibir_resultados(exec_srtf, tempos_srtf)
 
         print("\nResultados Prioridade Cooperativo (PrioC):")
